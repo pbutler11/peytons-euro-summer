@@ -1,4 +1,7 @@
 import Link from 'next/link';
+import { getHomepageCities } from '@/lib/cities';
+import { getLatestPost } from '@/lib/posts';
+
 
 export function MainContent() {
   return (
@@ -12,72 +15,71 @@ export function MainContent() {
 }
 
 function LatestEntry() {
-  return (
-    <article className="latest-entry">
-      <h2 className="entry-title">✿ latest entry: bologna day 3</h2>
-      <div className="entry-meta">
-        posted may 17 @ 11:42pm · 🏷 italy, pasta, jesse, trains
-      </div>
-      <p className="entry-body">
-        jesse and i woke up at 6am to get to the mercato delle erbe before the
-        tour groups. ordered tagliatelle al ragù at a tiny place where the nonna
-        literally rolled the pasta in front of us. i think i blacked out. wrote
-        a whole paragraph in my notes app about it...
-      </p>
-      <div className="entry-footer">
-        <Link href="/bologna/day-3">[ read more → ]</Link>
-        <span className="entry-stats"> | 12 comments | ♥ 38</span>
-      </div>
-    </article>
-  );
-}
-
+    const latest = getLatestPost();
+    if (!latest) {
+      return (
+        <article className="latest-entry">
+          <h2 className="entry-title">✿ no entries yet</h2>
+          <p className="entry-body">
+            posts coming soon... check back after the first city!
+          </p>
+        </article>
+      );
+    }
+  
+    return (
+      <article className="latest-entry">
+        <h2 className="entry-title">✿ latest entry: {latest.title}</h2>
+        <div className="entry-meta">
+          posted {formatPostDate(latest.date)} · 🏷 {latest.tags.join(', ')}
+        </div>
+        <p className="entry-body">{latest.excerpt}</p>
+        <div className="entry-footer">
+          <Link href={`/${latest.city}/${latest.slug}`}>[ read more → ]</Link>
+        </div>
+      </article>
+    );
+  }
+  
+  function formatPostDate(iso: string): string {
+    const d = new Date(iso);
+    return d.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+    });
+  }
 function CityGrid() {
-  const cities = [
-    {
-      slug: 'valencia',
-      name: 'valencia',
-      meta: 'may 14–19 · 5 posts',
-      theme: 'teal',
-      current: false,
-    },
-    {
-      slug: 'porto',
-      name: 'porto',
-      meta: 'coming soon...',
-      theme: 'coral',
-      current: false,
-    },
-    {
-      slug: 'bologna',
-      name: 'bologna ★',
-      meta: 'CURRENTLY HERE',
-      theme: 'pink',
-      current: true,
-    },
-    {
-      slug: 'lyon',
-      name: 'lyon',
-      meta: 'coming soon...',
-      theme: 'purple',
-      current: false,
-    },
-  ];
+  const cities = getHomepageCities();
 
   return (
-    <div className="city-grid">
-      {cities.map((city) => (
-        <Link
-          key={city.slug}
-          href={`/${city.slug}`}
-          className={`city-card city-${city.theme} ${city.current ? 'current' : ''}`}
-        >
-          <div className="city-name">📍 {city.name}</div>
-          <div className="city-meta">{city.meta}</div>
-          <span className="city-enter">→ enter</span>
-        </Link>
-      ))}
-    </div>
+    <>
+      <div className="city-grid">
+        {cities.map((city) => (
+          <Link
+            key={city.slug}
+            href={`/${city.slug}`}
+            className={`city-card city-${city.theme} ${city.status === 'current' ? 'current' : ''} ${city.status === 'past' ? 'past' : ''}`}
+          >
+            <div className="city-name">
+              {city.flag} {city.name}
+              {city.status === 'current' ? ' ★' : ''}
+            </div>
+            <div className="city-meta">
+              {city.status === 'current' && 'CURRENTLY HERE'}
+              {city.status === 'upcoming' && 'coming soon...'}
+              {city.status === 'past' && 'visited ✓'}
+            </div>
+            <span className="city-enter">→ enter</span>
+          </Link>
+        ))}
+      </div>
+      <div
+        style={{ textAlign: 'right', fontSize: '11px', marginTop: '-4px' }}
+      >
+        <Link href="/trip">→ see the whole trip</Link>
+      </div>
+    </>
   );
 }
 
