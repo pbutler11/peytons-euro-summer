@@ -599,3 +599,113 @@
   color: var(--c-muted);
   font-style: italic;
 }
+/* ============================================
+   MDX photos
+   ============================================ */
+
+   .mdx-photo {
+    margin: 20px 0;
+    padding: 0;
+  }
+  
+  .mdx-photo-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--c-ink);
+    /* polaroid-style frame */
+    padding: 6px;
+    background: var(--c-paper);
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+  }
+  
+  .mdx-photo-caption {
+    font-size: 12px;
+    font-style: italic;
+    color: var(--c-muted);
+    text-align: center;
+    margin-top: 8px;
+    padding: 0 12px;
+  }
+  
+  .mdx-photo-center {
+    text-align: center;
+  }
+  
+  .mdx-photo-left {
+    float: left;
+    margin-right: 16px;
+    max-width: 50%;
+  }
+  
+  .mdx-photo-right {
+    float: right;
+    margin-left: 16px;
+    max-width: 50%;
+  }
+  /* ============================================
+   photo carousel
+   ============================================ */
+
+.carousel {
+  margin: 24px 0;
+  background: var(--c-paper);
+  border: 1px solid var(--c-ink);
+  padding: 8px 8px 12px;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+}
+
+.carousel-frame {
+  position: relative;
+  width: 100%;
+  background: var(--c-chrome);
+  border: 1px inset var(--c-chrome);
+  overflow: hidden;
+}
+
+.carousel-image {
+  object-fit: cover;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  gap: 12px;
+}
+
+.carousel-btn {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: var(--c-chrome);
+  color: var(--c-ink);
+  border: 2px outset var(--c-chrome);
+  padding: 4px 12px;
+  cursor: pointer;
+}
+
+.carousel-btn:hover {
+  background: #ffff00;
+}
+
+.carousel-btn:active {
+  border-style: inset;
+}
+
+.carousel-counter {
+  font-size: 11px;
+  color: var(--c-muted);
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+.carousel-caption {
+  font-size: 12px;
+  font-style: italic;
+  color: var(--c-muted);
+  text-align: center;
+  margin: 10px 0 0;
+  padding: 0 12px;
+  line-height: 1.5;
+}
