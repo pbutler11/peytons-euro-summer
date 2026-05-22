@@ -4,9 +4,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
 import { getCityBySlug } from '@/lib/cities';
-import { getPostsByCity } from '@/lib/posts';
+import { getPostsByCity,getAdjacentPosts } from '@/lib/posts';
 import type { PostFrontmatter } from '@/lib/posts';
-
 type PageProps = {
   params: Promise<{ city: string; slug: string }>;
 };
@@ -87,8 +86,8 @@ export default async function PostPage({ params }: PageProps) {
       </div>
 
       <footer className="post-footer">
-        <Link href={`/${city.slug}`}>← more from {city.name}</Link>
-      </footer>
+  <PostNav citySlug={city.slug} cityName={city.name} currentSlug={slug} />
+</footer>
     </article>
   );
 }
@@ -100,4 +99,45 @@ function formatDate(iso: string): string {
     day: 'numeric',
     year: 'numeric',
   });
+}
+function PostNav({
+  citySlug,
+  cityName,
+  currentSlug,
+}: {
+  citySlug: string;
+  cityName: string;
+  currentSlug: string;
+}) {
+  const { prev, next } = getAdjacentPosts(citySlug, currentSlug);
+
+  return (
+    <div className="post-nav">
+      <div className="post-nav-prev">
+        {prev ? (
+          <Link href={`/${citySlug}/${prev.slug}`}>
+            <div className="post-nav-label">← previous</div>
+            <div className="post-nav-title">{prev.title}</div>
+          </Link>
+        ) : (
+          <div className="post-nav-empty">first post in {cityName} ✦</div>
+        )}
+      </div>
+
+      <div className="post-nav-center">
+        <Link href={`/${citySlug}`}>more from {cityName}</Link>
+      </div>
+
+      <div className="post-nav-next">
+        {next ? (
+          <Link href={`/${citySlug}/${next.slug}`}>
+            <div className="post-nav-label">next →</div>
+            <div className="post-nav-title">{next.title}</div>
+          </Link>
+        ) : (
+          <div className="post-nav-empty">latest post in {cityName} ✦</div>
+        )}
+      </div>
+    </div>
+  );
 }

@@ -56,3 +56,24 @@ export function getLatestPost(): PostFrontmatter | null {
   const all = getAllPosts();
   return all[0] ?? null;
 }
+/**
+ * Find the previous and next posts within the same city.
+ * "Previous" = older post (earlier in the trip)
+ * "Next" = newer post (later in the trip)
+ */
+export function getAdjacentPosts(citySlug: string, currentSlug: string): {
+  prev: PostFrontmatter | null;
+  next: PostFrontmatter | null;
+} {
+  const posts = getPostsByCity(citySlug);
+  // getPostsByCity sorts newest first; reverse so index 0 = oldest
+  const chronological = [...posts].reverse();
+  const currentIndex = chronological.findIndex((p) => p.slug === currentSlug);
+
+  if (currentIndex === -1) return { prev: null, next: null };
+
+  return {
+    prev: chronological[currentIndex - 1] ?? null,
+    next: chronological[currentIndex + 1] ?? null,
+  };
+}
