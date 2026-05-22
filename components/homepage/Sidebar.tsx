@@ -1,6 +1,8 @@
 import Link from 'next/link';
+import { getTripStats } from '@/lib/stats';
 
 export function Sidebar() {
+    const stats = getTripStats();
   return (
     <aside className="sidebar">
       {/* Navigation */}
@@ -40,29 +42,27 @@ export function Sidebar() {
           </div>
         </div>
       </div>
-
-      {/* Trip stats */}
-      <div className="bevel">
-        <div className="widget-title teal">✈ trip stats</div>
-        <div className="trip-stats">
-          <div>
-            cities: <strong>3 / 6</strong>
-          </div>
-          <div>
-            days: <strong>14</strong>
-          </div>
-          <div>
-            gelatos: <strong>19</strong>
-          </div>
-          <div>
-            trains: <strong>7</strong>
-          </div>
-          <div>
-            missed: <strong>1</strong>
-          </div>
-        </div>
-      </div>
-
+{/* Trip stats */}
+<div className="bevel">
+  <div className="widget-title teal">✈ trip stats</div>
+  <div className="trip-stats">
+    <div>
+      cities: <strong>{stats.citiesVisited} / {stats.citiesTotal}</strong>
+    </div>
+    <div>
+      days: <strong>{stats.daysOnTrip}</strong>
+    </div>
+    <div>
+      caffecitos: <strong>{stats.caffecitos}</strong>
+    </div>
+    <div>
+      trains: <strong>{stats.trains}</strong>
+    </div>
+    <div>
+      missed: <strong>{stats.trainsMissed}</strong>
+    </div>
+  </div>
+</div>
       {/* Visitor counter */}
       <div className="bevel visitor-counter">
         <div className="counter-display">00000247</div>

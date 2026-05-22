@@ -6,6 +6,8 @@ import matter from 'gray-matter';
 import { getCityBySlug } from '@/lib/cities';
 import { getPostsByCity,getAdjacentPosts } from '@/lib/posts';
 import type { PostFrontmatter } from '@/lib/posts';
+import Image from 'next/image';
+
 type PageProps = {
   params: Promise<{ city: string; slug: string }>;
 };
@@ -73,13 +75,27 @@ export default async function PostPage({ params }: PageProps) {
         </Link>
       </div>
 
-      <header className="post-header">
-        <h1 className="post-title">{frontmatter.title}</h1>
-        <div className="post-meta">
-          posted {formatDate(frontmatter.date)} · 🏷{' '}
-          {frontmatter.tags.join(', ')}
-        </div>
-      </header>
+      {frontmatter.hero && (
+  <div className="post-hero">
+    <Image
+      src={frontmatter.hero}
+      alt={frontmatter.title}
+      width={1600}
+      height={900}
+      priority
+      sizes="(max-width: 600px) 100vw, 800px"
+      className="post-hero-img"
+    />
+  </div>
+)}
+
+<header className="post-header">
+  <h1 className="post-title">{frontmatter.title}</h1>
+  <div className="post-meta">
+    posted {formatDate(frontmatter.date)} · 🏷{' '}
+    {frontmatter.tags.join(', ')}
+  </div>
+</header>
 
       <div className="post-body">
         <PostContent />

@@ -77,3 +77,33 @@ export function getAdjacentPosts(citySlug: string, currentSlug: string): {
     next: chronological[currentIndex + 1] ?? null,
   };
 }
+
+/**
+ * Get aggregated info about a city's posts:
+ * count, date range, and a hero image (uses the most recent post's hero).
+ */
+export function getCityPostStats(citySlug: string): {
+  count: number;
+  firstDate: string | null;
+  lastDate: string | null;
+  heroImage: string | null;
+} {
+  const posts = getPostsByCity(citySlug);
+  if (posts.length === 0) {
+    return { count: 0, firstDate: null, lastDate: null, heroImage: null };
+  }
+
+  // posts are sorted newest-first
+  const newest = posts[0];
+  const oldest = posts[posts.length - 1];
+
+  // find the first post that has a hero image
+  const postWithHero = posts.find((p) => p.hero && p.hero.length > 0);
+
+  return {
+    count: posts.length,
+    firstDate: oldest.date,
+    lastDate: newest.date,
+    heroImage: postWithHero?.hero || null,
+  };
+}
