@@ -91,7 +91,7 @@ function AimBubbles() {
         <div className="aim-message">should we get gelato AGAIN</div>
       </div>
       <div className="aim-bubble aim-peyton">
-        <div className="aim-username">◂ peyt_xoxo</div>
+        <div className="aim-username">◂ pbutler_says</div>
         <div className="aim-message">is that even a question</div>
       </div>
     </div>

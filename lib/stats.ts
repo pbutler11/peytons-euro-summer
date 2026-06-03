@@ -16,8 +16,8 @@ export function getTripStats() {
     citiesTotal: totalCities,
     // these are personal counters — update them manually as the trip progresses
     daysOnTrip: computeDaysOnTrip(),
-    caffecitos: 0,
-    trains: 0,
+    caffecitos: 42,
+    trains: 12,
     trainsMissed: 0,
   };
 }

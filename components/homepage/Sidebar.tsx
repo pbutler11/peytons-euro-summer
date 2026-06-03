@@ -32,7 +32,7 @@ export async function Sidebar() {
         <div className="trip-stats">
           <div>cities: <strong>{stats.citiesVisited} / {stats.citiesTotal}</strong></div>
           <div>days: <strong>{stats.daysOnTrip}</strong></div>
-          <div>gelatos: <strong>{stats.caffecitos}</strong></div>
+          <div>caffecitos: <strong>{stats.caffecitos}</strong></div>
           <div>trains: <strong>{stats.trains}</strong></div>
           <div>missed: <strong>{stats.trainsMissed}</strong></div>
         </div>
