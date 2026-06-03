@@ -3,6 +3,8 @@ import { StatusBar } from '@/components/homepage/StatusBar';
 import { Sidebar } from '@/components/homepage/Sidebar';
 import { MainContent } from '@/components/homepage/MainContent';
 
+export const dynamic = 'force-dynamic';
+
 export default function Home() {
   return (
     <>

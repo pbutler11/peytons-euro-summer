@@ -3,7 +3,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: "peyton's euro summer 2026 ✿",
-  description: 'a travel diary from somewhere with better bread',
+  description: 'travel diary for friends and family across the pond',
 };
 
 export default function RootLayout({

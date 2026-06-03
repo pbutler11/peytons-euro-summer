@@ -4,6 +4,8 @@ import { db } from './index';
 import { guestbookEntries } from './schema';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
+import { siteCounters } from './schema';
+import { sql } from 'drizzle-orm';
 
 const entrySchema = z.object({
   name: z
@@ -74,5 +76,52 @@ export async function signGuestbook(
   } catch (err) {
     console.error('Failed to insert guestbook entry:', err);
     return { ok: false, error: 'something broke. please try again.' };
+  }
+  
+}
+
+const COUNTER_KEY = 'visitors';
+
+/**
+ * Increment the global visitor counter by 1 and return the new value.
+ * Uses an atomic UPSERT so concurrent visits don't overwrite each other.
+ */
+export async function incrementVisitorCount(): Promise<number> {
+  try {
+    const result = await db
+      .insert(siteCounters)
+      .values({ key: COUNTER_KEY, count: 1 })
+      .onConflictDoUpdate({
+        target: siteCounters.key,
+        set: {
+          count: sql`${siteCounters.count} + 1`,
+          updatedAt: new Date(),
+        },
+      })
+      .returning({ count: siteCounters.count });
+
+    return result[0]?.count ?? 0;
+  } catch (err) {
+    console.error('Failed to increment visitor count:', err);
+    return 0;
+  }
+}
+
+/**
+ * Read the visitor count without incrementing it.
+ * Used in places that shouldn't pad the number.
+ */
+export async function getVisitorCount(): Promise<number> {
+  try {
+    const result = await db
+      .select({ count: siteCounters.count })
+      .from(siteCounters)
+      .where(sql`${siteCounters.key} = ${COUNTER_KEY}`)
+      .limit(1);
+
+    return result[0]?.count ?? 0;
+  } catch (err) {
+    console.error('Failed to read visitor count:', err);
+    return 0;
   }
 }
