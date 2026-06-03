@@ -17,7 +17,7 @@ export default function TripPage() {
       <header className="trip-header">
         <h1 className="trip-page-title">✦ the whole trip ✦</h1>
         <p className="trip-page-subtitle">
-          a chronological tour of every stop, in order of when i hit them.
+         city by city!
         </p>
       </header>
 
