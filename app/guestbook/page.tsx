@@ -28,7 +28,7 @@ export default async function GuestbookPage() {
       <header className="guestbook-header">
         <h1 className="guestbook-title">★彡 sign the guestbook 彡★</h1>
         <p className="guestbook-subtitle">
-          ~ leave a note before you go, friend ~
+          ~ it's like a virtual post card ~
         </p>
       </header>
 
