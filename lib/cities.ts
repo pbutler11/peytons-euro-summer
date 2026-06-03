@@ -18,38 +18,119 @@ export type City = {
  */
 export const CITIES: City[] = [
     {
-        slug: 'barcelona',
-        name: 'barcelona',
-        country: 'spain',
-        flag: '🇪🇸',
-        status: 'past',  // ← you are here
-        theme: 'pink',
-      },
-      {
-        slug: 'morocco',
-        name: 'morocco',
-        country: 'morocco',
-        flag: '🇲🇦',
-        status: 'past',  // ← changed from 'past'
-        theme: 'amber',
-      },
-      {
-        slug: 'seville',
-        name: 'seville',
-        country: 'spain',
-        flag: '🇪🇸',
-        status: 'current',  // ← changed from 'past'
-        theme: 'amber',
-      },
-      {
-        slug: 'madrid',
-        name: 'madrid',
-        country: 'spain',
-        flag: '🇪🇸',
-        status: 'upcoming',  // ← changed from 'current'
-        theme: 'pink',  // (or change to whatever)
-      },
-];
+      slug: 'barcelona',
+      name: 'barcelona',
+      country: 'spain',
+      flag: '🇪🇸',
+      status: 'past',
+      theme: 'pink',
+    },
+    
+    {
+      slug: 'morocco',
+      name: 'morocco',
+      country: 'morocco',
+      flag: '🇲🇦',
+      status: 'past',
+      theme: 'amber',
+    },
+    {
+      slug: 'tossa-de-mar',
+      name: 'tossa de mar',
+      country: 'spain',
+      flag: '🇪🇸',
+      status: 'past',
+      theme: 'teal',
+    },
+    {
+      slug: 'seville',
+      name: 'seville',
+      country: 'spain',
+      flag: '🇪🇸',
+      status: 'current',
+      theme: 'coral',
+    },
+    {
+      slug: 'madrid',
+      name: 'madrid',
+      country: 'spain',
+      flag: '🇪🇸',
+      status: 'upcoming',
+      theme: 'pink',
+    },
+    {
+      slug: 'lisbon',
+      name: 'lisbon',
+      country: 'portugal',
+      flag: '🇵🇹',
+      status: 'upcoming',
+      theme: 'teal',
+    },
+    {
+      slug: 'porto',
+      name: 'porto',
+      country: 'portugal',
+      flag: '🇵🇹',
+      status: 'upcoming',
+      theme: 'blue',
+    },
+    {
+      slug: 'rome',
+      name: 'rome',
+      country: 'italy',
+      flag: '🇮🇹',
+      status: 'upcoming',
+      theme: 'amber',
+    },
+    {
+      slug: 'venice',
+      name: 'venice',
+      country: 'italy',
+      flag: '🇮🇹',
+      status: 'upcoming',
+      theme: 'teal',
+    },
+    {
+      slug: 'florence',
+      name: 'florence',
+      country: 'italy',
+      flag: '🇮🇹',
+      status: 'upcoming',
+      theme: 'coral',
+    },
+    {
+      slug: 'nice',
+      name: 'nice',
+      country: 'france',
+      flag: '🇫🇷',
+      status: 'upcoming',
+      theme: 'blue',
+    },
+    {
+      slug: 'paris',
+      name: 'paris',
+      country: 'france',
+      flag: '🇫🇷',
+      status: 'upcoming',
+      theme: 'pink',
+    },
+    {
+      slug: 'geneva',
+      name: 'geneva',
+      country: 'switzerland',
+      flag: '🇨🇭',
+      status: 'upcoming',
+      theme: 'purple',
+    },
+    {
+      slug: 'chamonix',
+      name: 'chamonix',
+      country: 'france',
+      flag: '🇫🇷',
+      status: 'upcoming',
+      theme: 'teal',
+    },
+  ];
 
 // --- helpers ---
 
