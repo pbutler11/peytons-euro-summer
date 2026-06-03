@@ -24,7 +24,7 @@ export default function AboutPage() {
         <p>
           welcome to my travel diary! it took a few weeks to get this blog up and running so my earlier entries have less detail as i've had to write them retroactively.
 
-          anyway! lately i have been so bored with all the modern webdesign out there. too many animations and too many gradients. zara larsson's music and lisa frank aesthetic inspired me to make my travel blog based on the early 2000s WORLD WIDE WEB. i wanted it to be cute and craigslist-esque. but also wanted to include modern features so i could continue learning new programming languages and libraries.
+          anyway! lately i have been so bored with all the modern web design out there. too many animations and too many gradients. zara larsson's music and lisa frank aesthetic inspired me to make my travel blog based on the early 2000s WORLD WIDE WEB. i wanted it to be cute and craigslist-esque. but also wanted to include modern features so i could continue learning new programming languages and libraries.
         </p>
       </section>
 
@@ -44,7 +44,7 @@ export default function AboutPage() {
     <a href="https://nextjs.org" target="_blank" rel="noopener noreferrer">
       next.js 15
     </a>{' '}
-    (app router), typescript, and hand-written css — no tailwind, no
+    (app router), typescript, and hand-written css. no tailwind, no
     component libraries. 
   </p>
   <p>
