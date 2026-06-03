@@ -19,6 +19,7 @@ export async function generateStaticParams() {
 
   const cities = fs.readdirSync(contentDir);
   for (const city of cities) {
+    if (city === 'food') continue;          // ← add this line
     const cityDir = path.join(contentDir, city);
     if (!fs.statSync(cityDir).isDirectory()) continue;
     const posts = getPostsByCity(city);

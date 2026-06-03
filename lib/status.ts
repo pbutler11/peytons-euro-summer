@@ -12,7 +12,7 @@ const MANUAL_OVERRIDE: StatusState | null = null;
  * The away message shown next to the status badge.
  * Update this whenever you want — it's the AIM-classic move.
  */
-export const AWAY_MESSAGE = 'eating pasta brb';
+export const AWAY_MESSAGE = 'suitcase + cobblestone = major L';
 
 /**
  * Get the current status — uses the override if set, otherwise auto-computes

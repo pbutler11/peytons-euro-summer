@@ -18,7 +18,7 @@ export default function PhotoDumpPage() {
       </div>
 
       <header className="photos-header">
-        <h1 className="photos-title">✿ photo dump ✿</h1>
+        <h1 className="photos-title">✿ photo album ✿</h1>
         <p className="photos-subtitle">
           every shot from the trip · {photos.length}{' '}
           {photos.length === 1 ? 'photo' : 'photos'}

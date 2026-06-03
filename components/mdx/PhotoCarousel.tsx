@@ -7,11 +7,17 @@ type PhotoItem = {
   src: string;
   alt: string;
   caption?: string;
+  /**
+   * Where to crop from. Default is "center center".
+   * For portrait subjects: "center top" or "top" keeps faces/heads in frame.
+   * For sunsets: "center bottom" keeps the horizon visible.
+   * Any CSS object-position value works: "left top", "right center", "50% 30%", etc.
+   */
+  focus?: string;
 };
 
 type PhotoCarouselProps = {
   photos: PhotoItem[];
-  /** Aspect ratio for the photo frame. Default 4:3. Use "1/1" for square, "3/4" for portrait, "16/9" for cinematic. */
   aspect?: string;
 };
 
@@ -58,6 +64,7 @@ export function PhotoCarousel({ photos, aspect = '4/3' }: PhotoCarouselProps) {
           fill
           sizes="(max-width: 600px) 100vw, 800px"
           className="carousel-image"
+          style={{ objectPosition: current.focus ?? 'center center' }}
           priority={index === 0}
         />
       </div>

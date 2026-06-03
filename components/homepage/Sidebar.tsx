@@ -15,7 +15,7 @@ export async function Sidebar() {
         <nav className="nav-list">
           <div>▸ <Link href="/">home</Link></div>
           <div>▸ <Link href="/trip">the trip</Link></div>
-          <div>▸ <Link href="/photos">photo dump</Link></div>
+          <div>▸ <Link href="/photos">photo album</Link></div>
           <div>▸ <Link href="/food">food log</Link></div>
           <div>▸ <Link href="/guestbook">guestbook</Link></div>
           <div>▸ <Link href="/about">about me</Link></div>

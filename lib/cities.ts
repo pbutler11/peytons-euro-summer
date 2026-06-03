@@ -22,7 +22,7 @@ export const CITIES: City[] = [
         name: 'barcelona',
         country: 'spain',
         flag: '🇪🇸',
-        status: 'current',  // ← you are here
+        status: 'past',  // ← you are here
         theme: 'pink',
       },
       {
@@ -30,7 +30,7 @@ export const CITIES: City[] = [
         name: 'morocco',
         country: 'morocco',
         flag: '🇲🇦',
-        status: 'upcoming',  // ← changed from 'past'
+        status: 'past',  // ← changed from 'past'
         theme: 'amber',
       },
       {
@@ -38,7 +38,7 @@ export const CITIES: City[] = [
         name: 'seville',
         country: 'spain',
         flag: '🇪🇸',
-        status: 'upcoming',  // ← changed from 'past'
+        status: 'current',  // ← changed from 'past'
         theme: 'amber',
       },
       {
